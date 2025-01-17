@@ -33,7 +33,7 @@ class ArchiveMessages extends Command
     {
         $config = DB::connection()->getConfig();
 
-        // check if connection is mysql or mariadb
+        // TODO check if connection is mysql or mariadb
 
         $from_date = now()->subDays(30);
 
@@ -43,7 +43,7 @@ class ArchiveMessages extends Command
 
         $query = Message::where('created_at', '>', $from_date);
 
-        // check if mysqldump command is available
+        // TODO check if mysqldump command is available
 
         if(($count = $query->count()) === 0) {
             $this->warn('No messages to archive.');
@@ -70,9 +70,9 @@ class ArchiveMessages extends Command
 
         $process->mustRun();
 
-        // verify that file exists and its content is correct
+        // TODO verify that file exists and its content is correct
 
-        // check if gzip command is available
+        // TODO check if gzip command is available
 
         $process = new Process(['gzip', $path]);
 
